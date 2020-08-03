@@ -1,27 +1,25 @@
-function formatDate(timestamp) {
-    let date = new Date(timestamp);
-    let hours = date.getHours();
-    if (hours < 10) {
-        minutes = `0${hours}`;
-    }
+let now = new Date();
 
-    let minutes = date.getMinutes()
+    
+        let dateElement = document.querySelector("#date");
+    
 
-    if (minutes < 10) {
-        minutes = `0${minutes}`;
-    }
-    let days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"];
+        let date = now.getDate();
+let hours = now.getHours() % 12 || 12;;
+        let minutes = now.getMinutes();
+        let year = now.getFullYear();
+        
 
-    let day = days[date.getDay()];
-    return `${day} ${hours}:${minutes}`;
-}
+        let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        days
+        let day = days[now.getDay()]; 
+
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let month = months[now.getMonth()];
+       
+
+
+        dateElement.innerHTML = `${day} ${month} ${date}, ${year} ${hours}:${minutes}`;
 
 
 function displayTemperature(response) {
@@ -41,15 +39,15 @@ function displayTemperature(response) {
     let windElement = document.querySelector("#wind");
     windElement.innerHTML = Math.round(response.data.wind.speed);
     
-    let dateElement = document.querySelector("#date");
-    dateElement.innerHTML = formatDate(response.data.dt * 1000);
+    
 
    
 }
 
 
 let apiKey = "8f64ba8aed726b6e04d4af5e8025ebf4";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}&units=metric`;
+let city = "New York";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 
 axios.get(apiUrl).then(displayTemperature);
