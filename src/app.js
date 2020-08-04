@@ -19,7 +19,7 @@ let now = new Date();
        
 
 
-        dateElement.innerHTML = `${day} ${month} ${date}, ${year} ${hours}:${minutes}`;
+        dateElement.innerHTML = `${day} ${month} ${date}, ${year} ${hours}:0${minutes}`;
 
 
 function displayTemperature(response) {
@@ -46,10 +46,18 @@ function displayTemperature(response) {
    
 }
 
+function search(city) {
+    let apiKey = "8f64ba8aed726b6e04d4af5e8025ebf4";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayTemperature);
+}
 
-let apiKey = "8f64ba8aed726b6e04d4af5e8025ebf4";
-let city = "Las Vegas";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function handleSubmit(event) {
+    event.preventDefault();
+    let cityInputElement = document.querySelector("#city-input");
+    search(cityInputElement.value);
+}
 
 
-axios.get(apiUrl).then(displayTemperature);
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
