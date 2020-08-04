@@ -5,7 +5,7 @@ let now = new Date();
     
 
         let date = now.getDate();
-let hours = now.getHours() % 12 || 12;;
+        let hours = now.getHours() % 12 || 12;;
         let minutes = now.getMinutes();
         let year = now.getFullYear();
         
@@ -39,14 +39,16 @@ function displayTemperature(response) {
     let windElement = document.querySelector("#wind");
     windElement.innerHTML = Math.round(response.data.wind.speed);
     
-    
+    let iconElement = document.querySelector("#icon");
+    iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
+    iconElement.setAttribute("alt, response.data.weather[0].description);")
    
 }
 
 
 let apiKey = "8f64ba8aed726b6e04d4af5e8025ebf4";
-let city = "New York";
+let city = "Las Vegas";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 
