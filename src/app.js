@@ -49,7 +49,7 @@ function displayTemperature(response) {
 
 function formatHours(timestamp) {
   let date = new Date(timestamp);
-  let hours = date.getHours();
+  let hours = date.getHours() ;
   if (hours < 10) {
     hours = `0${hours}`;
   }
@@ -69,7 +69,9 @@ function displayForecast(response) {
   for (let index = 0; index < 6; index++) {
     forecast = response.data.list[index];
     forecastElement.innerHTML += `
+    
     <div class="col-2">
+    
       <h3>
         ${formatHours(forecast.dt * 1000)}
       </h3>
@@ -136,6 +138,24 @@ fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
+
+
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+
+}
+
+let currentLocationButton = document.querySelector("#current-location");
+currentLocationButton.addEventListener("click", getCurrentLocation);
+
+function searchLocation(position) {
+  let apiKey = "8f64ba8aed726b6e04d4af5e8025ebf4";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
+
+  axios.get(apiUrl).then(displayTemperature);
+
+}
 
 
 search("Las Vegas");

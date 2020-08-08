@@ -8,6 +8,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
+   <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;700&family=Nunito&family=Raleway&family=Special+Elite&display=swap" rel="stylesheet">
+
 
     <link rel="stylesheet" href="src/style.css">
 
@@ -17,7 +19,7 @@
     <div class="container">
         <div class="weather-app-wrapper">
         <div class="weather-app">
-            <form id="search-form" class="mb-3">
+            <form id="search-form" class="mb-4">
                 <div class="row">
                     <div class="col-5">
                 <input type="search" placeholder="Type a city..."
@@ -27,13 +29,13 @@
 
                 <div class="col-3">
                 <input type="submit" value="Search"
-                class="btn btn-primary w-100" />
+                class="btn btn-light w-100" />
 
                 </div>
 
                 <div class="col-3">
-                <input type="submit" value="Curent Location"
-                class="btn btn-primary w-150" />
+                <input type="submit" value="Current Location"
+                class="btn btn-dark w-125" id="current-location" />
                 
                 </div>
                 </div>
@@ -51,7 +53,7 @@
             </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="clearfix weather-temperature">
+            <div class="weather-temperature">
             <img src="" class="float-left"
             id="icon" />
             <div class="float-left">
@@ -83,7 +85,7 @@
    
         </div>
          <small class="coded">
-        <a href="https://github.com/awolkailer/Vanilla-Weather-App" target="_blank">Open-Source code </a> by Kaila Turpin</small>
+        <a href="https://github.com/awolkailer/Vanilla-Weather-App" target="_blank" class="github">Open-Source code </a> by Kaila Turpin</small>
     </div>
     <script src="src/app.js"></script>
 </body>
