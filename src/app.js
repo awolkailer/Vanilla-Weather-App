@@ -140,14 +140,7 @@ celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 
 
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
 
-}
-
-let currentLocationButton = document.querySelector("#current-location");
-currentLocationButton.addEventListener("click", getCurrentLocation);
 
 function searchLocation(position) {
   let apiKey = "8f64ba8aed726b6e04d4af5e8025ebf4";

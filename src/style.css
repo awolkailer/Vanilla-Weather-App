@@ -29,6 +29,13 @@ li {
     text-transform: capitalize;
 }
 
+p {
+    font-size: 16px;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 
 .weather-app-wrapper {
    background-color: #CDDCDC;
